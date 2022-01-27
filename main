@@ -1,0 +1,70 @@
+% Problema 1:
+% Se deja caer un objeto y mientras cae se toman las siguientes
+% medidas. Cual es la recta que se aproxima a los datos. 
+%   
+
+fprintf("Ajuste lineal por minimos cuadrados\n");
+fprintf("PROBLEMA 1\n");
+fprintf('\n')
+tiempo=[0,1,2,4,6];
+altura=[200,195,180,120,25];
+
+
+try 
+  [a0,a1]=ajuste_con_minimos_cuadrados(tiempo,altura);
+  fprintf('y=%f x + (%f)\n',a0,a1)
+   
+   h=figure(1);
+   plot(tiempo, altura, "or")
+   hold on 
+   
+  
+     x1=-1:0.01:7;
+     y=a0*x1+a1;
+     plot(x1, y,".b")
+     xlabel("x");
+     ylabel("f(x)");
+     legend ("f(x)");
+     hold on;
+
+
+catch err
+  fprintf('Error: %s\n',err.message);
+  %err.identifier
+end
+hold off;
+
+% Problema 2:
+% se ha cargado un muelle con diferentes pesos y se
+% han anotado los siguientes alargamientos.Cual es la
+% recta que se aproxima a los datos.
+%   
+
+fprintf('\n')
+fprintf("PROBLEMA 2\n");
+fprintf('\n')
+cargas=[70,63,72,60,66,70,74,65,62,67,65,68];
+lectura=[155,150,180,135,156,168,178,160,132,145,139,152];
+
+try 
+  [a0,a1]=ajuste_con_minimos_cuadrados(cargas,lectura);
+  fprintf('y=%f x + (%f)\n',a0,a1)
+   
+   h=figure(2);
+   plot(cargas, lectura, "or")
+   hold on 
+   
+  
+     x1=60:0.1:80;
+     y=a0*x1+a1;
+     plot(x1, y,".b")
+     xlabel("x");
+     ylabel("f(x)");
+     legend ("f(x)");
+     hold on;
+
+
+catch err
+  fprintf('Error: %s\n',err.message);
+  %err.identifier
+end
